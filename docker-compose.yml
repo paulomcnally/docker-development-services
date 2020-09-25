@@ -11,7 +11,7 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_PASSWORD:
-    estart: always
+    restart: always
 
   # redis
   redis:
@@ -31,3 +31,4 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: development
     ports:
       - '27017-27019:27017-27019'
+    restart: always
