@@ -6,29 +6,33 @@ services:
   postgres:
     image: postgres:12.4
     container_name: 'postgres'
+    restart: always
     ports:
       - 5432:5432
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
-      POSTGRES_PASSWORD:
-    restart: always
+      POSTGRES_USER: development
+      POSTGRES_PASSWORD: development
 
   # redis
   redis:
     image: redis:5.0.9
     container_name: 'redis'
+    restart: always
     ports:
       - 6379:6379
-    command: redis-server --appendonly yes
-    restart: always
-  
+    environment:
+      REDIS_PASSWORD: development
+    command: redis-server --appendonly yes    
+
+  # mongo
   mongo:
     image: mongo:4.4.1
     container_name: 'mongo'
+    restart: always
+    ports:
+      - '27017-27019:27017-27019'
     environment:
       MONGO_INITDB_DATABASE: development
       MONGO_INITDB_ROOT_USERNAME: development
       MONGO_INITDB_ROOT_PASSWORD: development
-    ports:
-      - '27017-27019:27017-27019'
-    restart: always
