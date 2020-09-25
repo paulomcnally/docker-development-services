@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  # postgres
+  postgres:
+    image: postgres:12.4
+    container_name: 'postgres'
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_PASSWORD:
+    estart: always
+
+  # redis
+  redis:
+    image: redis:5.0.9
+    container_name: 'redis'
+    ports:
+      - 6379:6379
+    command: redis-server --appendonly yes
+    restart: always
+  
+  mongo:
+    image: mongo:4.4.1
+    container_name: 'mongo'
+    environment:
+      MONGO_INITDB_DATABASE: development
+      MONGO_INITDB_ROOT_USERNAME: development
+      MONGO_INITDB_ROOT_PASSWORD: development
+    ports:
+      - '27017-27019:27017-27019'
