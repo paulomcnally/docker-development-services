@@ -13,6 +13,8 @@ services:
       POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_USER: development
       POSTGRES_PASSWORD: development
+    volumes:
+     - ./dumps:/db/dumps
 
   # redis
   redis:
@@ -24,6 +26,8 @@ services:
     environment:
       REDIS_PASSWORD: development
     command: redis-server --appendonly yes    
+    volumes:
+     - ./dumps:/db/dumps
 
   # mongo
   mongo:
@@ -36,3 +40,5 @@ services:
       MONGO_INITDB_DATABASE: development
       MONGO_INITDB_ROOT_USERNAME: development
       MONGO_INITDB_ROOT_PASSWORD: development
+    volumes:
+     - ./dumps:/db/dumps
