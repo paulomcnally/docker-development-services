@@ -42,3 +42,10 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: development
     volumes:
      - ./dumps:/db/dumps
+  
+  # memcached
+  memcached:
+    container_name: mymemcached
+    image: memcached:latest
+    ports:
+      - "11211:11211"
