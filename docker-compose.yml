@@ -4,7 +4,7 @@ services:
 
   # postgres
   postgres:
-    image: postgres:12.4
+    image: postgres:13.22
     container_name: 'postgres'
     restart: always
     ports:
@@ -18,7 +18,7 @@ services:
 
   # redis
   redis:
-    image: redis:5.0.9
+    image: redis:8.2.1
     container_name: 'redis'
     restart: always
     ports:
@@ -31,7 +31,7 @@ services:
 
   # mongo
   mongo:
-    image: mongo:4.4.1
+    image: mongo:8.0.13
     container_name: 'mongo'
     restart: always
     ports:
@@ -46,6 +46,6 @@ services:
   # memcached
   memcached:
     container_name: mymemcached
-    image: memcached:latest
+    image: memcached:1.6.39
     ports:
       - "11211:11211"
